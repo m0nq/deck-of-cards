@@ -47,7 +47,16 @@
   }
 
   Deck.prototype.shuffle = function () {
-    console.log(this);
+    let cardsToShuffle = this.gameDeck.deckData;
+    let m = cardsToShuffle.length, t, i;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = cardsToShuffle[m];
+      cardsToShuffle[m] = cardsToShuffle[i];
+      cardsToShuffle[i] = t;
+    }
+    this.gameDeck.deckData = cardsToShuffle;
+    this.gameDeck.buildDeck(this.deckDiv);
   };
 
   class Card {
