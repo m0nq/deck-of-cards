@@ -43,8 +43,18 @@
         card.buildCard(parentFrag);
       }
       this.deckDiv.appendChild(parentFrag);
+      this.stack(this.deckDiv);
     };
   }
+
+  Deck.prototype.stack = function (deckDiv) {
+    let cards = deckDiv.children;
+    for (let i = cards.length - 1; i >= 0; i--) {
+      cards[i].style.top = `${i}px`;
+      cards[i].style.left = `${i}px`;
+      cards[i].classList.add('stacked-card');
+    }
+  };
 
   Deck.prototype.shuffle = function () {
     let cardsToShuffle = this.gameDeck.deckData;
@@ -65,10 +75,6 @@
       this.data = '';
       this.cardContainer = document.createElement('div');
       this.cardContainer.className = 'card-container';
-      this.cardContainer.onclick = (e) => {
-        e.currentTarget.classList.toggle('flip-card');
-        e.currentTarget.classList.toggle('slide-over');
-      };
       this.cardFront = document.createElement('div');
       this.cardFront.className = 'card-front';
       this.cardBack = document.createElement('div');
@@ -94,9 +100,20 @@
       flipDiv.appendChild(this.cardBack);
       this.cardContainer.id = this.id;
       this.cardContainer.appendChild(flipDiv);
+      this.cardContainer.onclick = cardClick;
       parentFrag.appendChild(this.cardContainer);
     };
   }
+
+  const cardClick = (() => {
+    let counter = 0;
+    return e => {
+      e.currentTarget.classList.toggle('flip-card');
+      e.currentTarget.classList.toggle('slide-over');
+      e.currentTarget.style.zIndex = counter.toString();
+      counter++;
+    };
+  })();
 
   class DiscardPile {
 
