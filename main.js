@@ -53,6 +53,10 @@
       this.data = '';
       this.cardContainer = document.createElement('div');
       this.cardContainer.className = 'card-container';
+      this.cardContainer.onclick = (e) => {
+        e.currentTarget.classList.toggle('flip-card');
+        e.currentTarget.classList.toggle('slide-over');
+      };
       this.cardFront = document.createElement('div');
       this.cardFront.className = 'card-front';
       this.cardBack = document.createElement('div');

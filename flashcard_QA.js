@@ -34,17 +34,17 @@ const flashcard_QA = [
   }, {
     'q': '<h3>What is encapsulation?</h3>',
     'a': 'Encapsulation is the ability of an object to be a container (or capsule) for its member properties, including variables and methods.',
-    'link': 'http://stackoverflow.com/questions/3597087/encapsulation-in-javascript',
+    'link': 'https://stackoverflow.com/questions/3597087/encapsulation-in-javascript',
     'category': 'javascript'
   }, {
     'q': '<h3>What does the term headless mean?</h3>',
     'a': 'Without a graphical display.',
-    'link': 'http://stackoverflow.com/questions/4647719/what-does-headless-mean',
+    'link': 'https://stackoverflow.com/questions/4647719/what-does-headless-mean',
     'category': 'javascript'
   }, {
     'q': '<h3>What is namespacing?</h3>',
     'a': 'Namespacing is a technique employed to avoid collisions with other objects or variables in the global namespace.',
-    'link': 'http://stackoverflow.com/questions/4647719/what-does-headless-mean',
+    'link': 'https://stackoverflow.com/questions/4647719/what-does-headless-mean',
     'category': 'javascript'
   }, {
     'q': '<h3>What are modules?</h3>',
