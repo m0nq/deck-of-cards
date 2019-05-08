@@ -1,28 +1,31 @@
 (window => {
-  // Game
   class Game {
     constructor(el, options) {
       this.el = document.querySelector(el);
       this.options = options;
 
-      //  Info section
       this.infoDiv = document.createElement('div');
       this.infoDiv.id = 'info-div';
 
-      //  Deck
       this.deckDiv = document.createElement('div');
       this.deckDiv.id = 'deck-div';
       this.gameDeck = new Deck(this.deckDiv, this.options);
       this.gameDeck.buildDeck();
 
+      let shuffleBtn = document.createElement('button');
+      shuffleBtn.innerText = 'Shuffle';
+      shuffleBtn.onclick = this.gameDeck.shuffle.bind(this);
+
+      this.infoDiv.appendChild(shuffleBtn);
+
       this.el.appendChild(this.infoDiv);
       this.el.appendChild(this.deckDiv);
+
       //  Discard Pile
       //  Rules
     }
   }
 
-  // Deck
   class Deck {
     constructor(deckDiv, options) {
       this.deckDiv = deckDiv;
@@ -43,10 +46,10 @@
     };
   }
 
-  //  Cards
-  // -----
-  //  shuffle
-  //  stack
+  Deck.prototype.shuffle = function () {
+    console.log(this);
+  };
+
   class Card {
     constructor() {
       this.id = '';
@@ -86,13 +89,6 @@
     };
   }
 
-  // Cards
-  //  val
-  //  suit
-  //  ----
-  //  flip
-
-  // Discard Pile
   class DiscardPile {
 
   }
