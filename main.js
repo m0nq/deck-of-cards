@@ -41,19 +41,52 @@
       }
       this.deckDiv.appendChild(parentFrag);
     };
-    //  Cards
-    // -----
-    //  shuffle
-    //  stack
+  }
+
+  //  Cards
+  // -----
+  //  shuffle
+  //  stack
+  class Card {
+    constructor() {
+      this.id = '';
+      this.data = '';
+      this.cardContainer = document.createElement('div');
+      this.cardContainer.className = 'card-container';
+      this.cardFront = document.createElement('div');
+      this.cardFront.className = 'card-front';
+      this.cardBack = document.createElement('div');
+      this.cardBack.className = 'card-back';
+    }
+
+    buildCard = parentFrag => {
+      let flipDiv = document.createElement('div'),
+        frontValDiv = document.createElement('div'),
+        backValDiv = document.createElement('div'),
+        categoryDiv = document.createElement('div');
+      flipDiv.className = 'flip';
+      frontValDiv.className = 'front-val';
+      backValDiv.className = 'back-val';
+      categoryDiv.className = 'cat-val';
+      frontValDiv.innerHTML = this.data.q;
+      backValDiv.innerHTML = this.data.a;
+      categoryDiv.innerHTML = this.data.category;
+      this.cardFront.appendChild(frontValDiv);
+      this.cardFront.appendChild(categoryDiv);
+      this.cardBack.appendChild(backValDiv);
+      flipDiv.appendChild(this.cardFront);
+      flipDiv.appendChild(this.cardBack);
+      this.cardContainer.id = this.id;
+      this.cardContainer.appendChild(flipDiv);
+      parentFrag.appendChild(this.cardContainer);
+    };
   }
 
   // Cards
-  class Card {
-    //  val
-    //  suit
-    //  ----
-    //  flip
-  }
+  //  val
+  //  suit
+  //  ----
+  //  flip
 
   // Discard Pile
   class DiscardPile {

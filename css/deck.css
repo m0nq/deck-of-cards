@@ -13,7 +13,7 @@ body{
 	min-height: 800px;
 }
 /*showing multiple hovers at once*/
-#standard-deck:hover .card_front{
+#standard-deck:hover .card-front{
 	background-color: #fffcf6;
 }
 #info_cont, #deck_cont, #discard_cont{
@@ -42,7 +42,7 @@ body{
     font-size: 1.5em;
     text-align: center;
 }
-.diamonds .suit_container, 
+.diamonds .suit_container,
 .hearts .suit_container{
 	color: red;
 }
@@ -58,7 +58,7 @@ body{
     bottom: 0px;
 }
 
-.card_container{
+.card-container{
 	float: left;
 	margin-right: 40px;
 	margin-bottom: 40px;
@@ -68,7 +68,7 @@ body{
 	position: relative;
 }
 
-.card_front, .card_back {
+.card-front, .card-back {
 	backface-visibility: hidden;
 	position: absolute;
 	top: 0;
@@ -84,27 +84,27 @@ body{
 	line-height: 1.5em
 }
 
-.card_front {
+.card-front {
 	z-index: 2;
 	transform: rotateY(0deg);
 	background-position: -86px -69px;
 }
 
-.card_back {
+.card-back {
 	transform: rotateY(180deg);
 	background-position: -915px -867px;
 }
-.back_val img {
+.back-val img {
     width: 40px;
     display: block;
     margin: 0 auto;
 }
-.back_val a{
+.back-val a{
 	border: thin solid #ccc;
 	display: block;
     padding: 10px;
 }
-.standard-deck .card_back {
+.standard-deck .card-back {
 	background-image: url(./images/stock-vector-playing-cards-spade-suit-highly-detailed-vector-illustration-eps-contains-transparences-97643009.jpg);
 }
 .card_category, .cat_val {
@@ -142,7 +142,7 @@ body{
 	position: absolute;
 	z-index: -1;
 }
-.holder_drop .card_container {
+.holder_drop .card-container {
     position: absolute;
 }
 
@@ -166,10 +166,10 @@ button {
     font-size: 1.1em;
 }
 
-.hearts .card_back,
-.diamonds .card_back,
-.clubs .card_back,
-.spades .card_back {
+.hearts .card-back,
+.diamonds .card-back,
+.clubs .card-back,
+.spades .card-back {
 	background: repeating-linear-gradient(
 		45deg,
 		#606dbc,
