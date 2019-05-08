@@ -9,7 +9,16 @@
 <body>
 	<section id="game_div"></section>
 	<footer></footer>
-	<script type="text/javascript" src="./flashcard_QA.json"></script>
+	<script type="text/javascript" src="flashcard_QA.js"></script>
 	<script type="text/javascript" src="./main.js"></script>
+  <script type="text/javascript">
+    (() => {
+      let myGame = new Game('#game_div', {
+        game: 'flashcard',
+        data: flashcard_QA
+      });
+      console.log('myGame ->', myGame);
+    })();
+  </script>
 </body>
 </html>
