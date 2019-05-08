@@ -5,12 +5,12 @@ const flashcard_QA = [
     'link': 'https://www.toptal.com/javascript/interview-questions',
     'category': 'javascript'
   }, {
-    'q': '<h3>What is the differnce between <br>== and ===?</h3>',
-    'a': '\'==\' allows for coersion</p>',
+    'q': '<h3>What is the difference between <br>== and ===?</h3>',
+    'a': '\'==\' allows for coercion</p>',
     'link': 'https://www.toptal.com/javascript/interview-questions',
     'category': 'javascript'
   }, {
-    'q': '<h3>What is the differnce between null and undefined?</h3>',
+    'q': '<h3>What is the difference between null and undefined?</h3>',
     'a': 'Null is an object. Undefined is when you decalre a variable but don\'t assign it.',
     'link': 'https://www.toptal.com/javascript/interview-questions',
     'category': 'javascript'

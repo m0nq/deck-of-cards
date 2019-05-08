@@ -4,26 +4,62 @@
     constructor(el, options) {
       this.el = document.querySelector(el);
       this.options = options;
+
+      //  Info section
+      this.infoDiv = document.createElement('div');
+      this.infoDiv.id = 'info-div';
+
+      //  Deck
+      this.deckDiv = document.createElement('div');
+      this.deckDiv.id = 'deck-div';
+      this.gameDeck = new Deck(this.deckDiv, this.options);
+      this.gameDeck.buildDeck();
+
+      this.el.appendChild(this.infoDiv);
+      this.el.appendChild(this.deckDiv);
+      //  Discard Pile
+      //  Rules
     }
   }
-  //  Info section
-  //  Deck
-  //  Discard Pile
-  //  Rules
 
   // Deck
-  //  Cards
-  // -----
-  //  shuffle
-  //  stack
+  class Deck {
+    constructor(deckDiv, options) {
+      this.deckDiv = deckDiv;
+      this.deckData = options.data;
+      this.card = new Card();
+    }
+
+    buildDeck = () => {
+      let parentFrag = document.createDocumentFragment();
+      this.deckDiv.innerHTML = '';
+      for (let i = this.deckData.length - 1; i >= 0; i--) {
+        let card = new Card();
+        card.id = `card-${i}`;
+        card.data = this.deckData[i];
+        card.buildCard(parentFrag);
+      }
+      this.deckDiv.appendChild(parentFrag);
+    };
+    //  Cards
+    // -----
+    //  shuffle
+    //  stack
+  }
 
   // Cards
-  //  val
-  //  suit
-  //  ----
-  //  flip
+  class Card {
+    //  val
+    //  suit
+    //  ----
+    //  flip
+  }
 
   // Discard Pile
+  class DiscardPile {
+
+  }
+
   //  Holders
   //  -----
   //  accept or reject
