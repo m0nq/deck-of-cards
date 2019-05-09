@@ -21,9 +21,44 @@
       this.el.appendChild(this.infoDiv);
       this.el.appendChild(this.deckDiv);
 
-      //  Discard Pile
       //  Rules
+      this.rules = {
+        discardRow: [
+          {
+            name: ' Got it!',
+            droppable: true,
+            maxcards: this.deckDiv.children.length,
+            piles: 1
+          }
+        ],
+        gameComplete: e => {
+          if (e.currentTarget.childNodes.length === this.discardRow[0].maxcards) {
+            console.log('You win!');
+          }
+        }
+      };
+      this.buildDiscard();
     }
+
+    //  Discard Pile
+    buildDiscard = () => {
+      for (let i = this.rules.discardRow.length - 1; i >= 0; i--) {
+        let zone = document.createElement('div');
+        zone.className = 'zone row';
+        let discardRule = this.rules.discardRow[i];
+        let c = 0;
+        while (c < discardRule.piles) {
+          let discardObj = new DiscardPile();
+          discardObj.name = discardRule.name;
+          discardObj.droppable = discardRule.droppable;
+          discardObj.id = `pile-${c}`;
+          let buildObj = discardObj.init();
+          zone.appendChild(buildObj);
+          c++;
+        }
+        this.el.appendChild(zone);
+      }
+    };
   }
 
   class Deck {
@@ -112,6 +147,8 @@
       this.cardContainer.id = this.id;
       this.cardContainer.appendChild(flipDiv);
       this.cardContainer.onclick = cardClick;
+      this.cardContainer.draggable = true;
+      this.cardContainer.ondragstart = cardDrag;
       parentFrag.appendChild(this.cardContainer);
     };
   }
@@ -126,10 +163,40 @@
     };
   })();
 
-  class DiscardPile {
+  const cardDrag = e => {
+    e.dataTransfer.setData('text/plain', e.currentTarget.id);
+  };
 
+  class DiscardPile {
+    constructor() {
+      this.name = '';
+      this.droppable;
+      this.id = '';
+    }
+
+    init = () => {
+      let holderContainer = document.createElement('div'),
+        holderLabel = document.createElement('div'),
+        holderTarget = document.createElement('div');
+      holderTarget.ondragover = e => e.preventDefault();
+      holderTarget.ondrop = this.cardDrop;
+      holderContainer.className = 'holder-container';
+      holderLabel.className = 'holder-label';
+      holderTarget.className = 'holder-target';
+      holderLabel.innerText = this.name;
+      holderContainer.appendChild(holderLabel);
+      holderContainer.appendChild(holderTarget);
+      return holderContainer;
+    };
   }
 
+  DiscardPile.prototype.cardDrop = e => {
+    const cardID = e.dataTransfer.getData('text/plain');
+    const cardDragging = document.querySelector(`#${cardID}`);
+    cardDragging.style.top = '0px';
+    cardDragging.style.left = '0px';
+    e.currentTarget.appendChild(cardDragging);
+  };
   //  Holders
   //  -----
   //  accept or reject
